@@ -22,8 +22,7 @@ public class Main {
                 guestFloor = TotalFloor;
             }
             //1. 01번째 방이려면 입장 순서가 층수와 같거나 작아야 함.
-            //2. 만약 층 수와 입장 순서가 같을 경우도 01번째 방이어야 함.
-            //3. 그 이후로는 나머지 값이 0일 때만 그대로, 0이 아닐땐 +1.
+            //2. 그 이후로는 나머지 값이 0일 때만 그대로, 0이 아닐땐 +1.
             int guestRoom = (guestNum / TotalFloor);
             if (TotalFloor >= guestNum) {
                 guestRoom = 1;
