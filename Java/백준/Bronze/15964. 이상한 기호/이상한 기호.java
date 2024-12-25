@@ -6,11 +6,11 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         String[] str = br.readLine().split(" ");
-        int A = Integer.parseInt(str[0]);
-        int B = Integer.parseInt(str[1]);
-        int result = (A + B) * (A - B);
+        long A = Long.parseLong(str[0]);
+        long B = Long.parseLong(str[1]);
+        long result = (A + B) * (A - B);
 
-        bw.write(Integer.toString(result));
+        bw.write(result + "");
 
         bw.flush();
         bw.close();
