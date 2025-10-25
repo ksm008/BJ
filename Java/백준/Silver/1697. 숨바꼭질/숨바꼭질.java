@@ -1,0 +1,53 @@
+import java.io.*;  
+import java.util.ArrayDeque;  
+import java.util.Deque;  
+import java.util.StringTokenizer;  
+  
+public class Main {  
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));  
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  
+    static StringBuilder sb = new StringBuilder();  
+  
+    public static void main(String[] args) throws IOException {  
+        StringTokenizer st = new StringTokenizer(br.readLine());  
+        int N = Integer.parseInt(st.nextToken());  
+        int K = Integer.parseInt(st.nextToken());  
+  
+        boolean[] visited = new boolean[100001];  
+  
+        sb.append(bfs(N, K, visited));  
+  
+        bw.write(sb.toString());  
+        bw.flush();  
+        bw.close();  
+        br.close();  
+    }  
+  
+    static int bfs(int N, int K, boolean[] visited) {  
+        if (N == K) return 0;  
+  
+        Deque<Integer> queue = new ArrayDeque<>();  
+        queue.add(N);  
+        visited[N] = true;  
+        int time = 0;  
+  
+        while (!queue.isEmpty()) {  
+            int size = queue.size();  
+            time++;  
+            for (int i = 0; i < size; i++) {  
+                int cur = queue.poll();  
+                int[] nextAction = {cur - 1, cur + 1, cur * 2};  
+                  
+                for (int action : nextAction) {  
+                    if (action == K) return time;  
+  
+                    if (action >= 0 && action < 100001 && !visited[action]) {  
+                        visited[action] = true;  
+                        queue.add(action);  
+                    }  
+                }  
+            }  
+        }  
+        return -1;  
+    }  
+}
